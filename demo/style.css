@@ -1,0 +1,103 @@
+/* ローディング画面のスタイル */
+#loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0bd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+  transition: opacity 1s ease;
+  z-index: 9999;
+}
+
+.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ローダーラッパー */
+.loader-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* メインコンテンツのスタイル */
+#main {
+  display: none;
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+h1, h2 {
+  color: #1e7bb6;
+}
+
+/* スピナーのアニメーション */
+.breeding-rhombus-spinner {
+  height: 65px;
+  width: 65px;
+  position: relative;
+  transform: rotate(45deg);
+}
+
+.breeding-rhombus-spinner,
+.breeding-rhombus-spinner * {
+  box-sizing: border-box;
+}
+
+.breeding-rhombus-spinner .rhombus {
+  height: calc(65px / 7.5);
+  width: calc(65px / 7.5);
+  animation-duration: 2000ms;
+  top: calc(65px / 2.3077);
+  left: calc(65px / 2.3077);
+  background-color: #ff1d5e;
+  position: absolute;
+  animation-iteration-count: infinite;
+}
+
+.breeding-rhombus-spinner .rhombus.child-1 { animation-name: child-1; animation-delay: 100ms; }
+.breeding-rhombus-spinner .rhombus.child-2 { animation-name: child-2; animation-delay: 200ms; }
+.breeding-rhombus-spinner .rhombus.child-3 { animation-name: child-3; animation-delay: 300ms; }
+.breeding-rhombus-spinner .rhombus.child-4 { animation-name: child-4; animation-delay: 400ms; }
+.breeding-rhombus-spinner .rhombus.child-5 { animation-name: child-5; animation-delay: 500ms; }
+.breeding-rhombus-spinner .rhombus.child-6 { animation-name: child-6; animation-delay: 600ms; }
+.breeding-rhombus-spinner .rhombus.child-7 { animation-name: child-7; animation-delay: 700ms; }
+.breeding-rhombus-spinner .rhombus.child-8 { animation-name: child-8; animation-delay: 800ms; }
+
+.breeding-rhombus-spinner .rhombus.big {
+  height: calc(65px / 3);
+  width: calc(65px / 3);
+  top: calc(65px / 3);
+  left: calc(65px / 3);
+  animation: big 2s infinite;
+}
+
+/* アニメーション */
+@keyframes child-1 { 50% { transform: translate(-325%, -325%); } }
+@keyframes child-2 { 50% { transform: translate(0, -325%); } }
+@keyframes child-3 { 50% { transform: translate(325%, -325%); } }
+@keyframes child-4 { 50% { transform: translate(325%, 0); } }
+@keyframes child-5 { 50% { transform: translate(325%, 325%); } }
+@keyframes child-6 { 50% { transform: translate(0, 325%); } }
+@keyframes child-7 { 50% { transform: translate(-325%, 325%); } }
+@keyframes child-8 { 50% { transform: translate(-325%, 0); } }
+@keyframes big { 50% { transform: scale(0.5); } }
+
+/* フェードアウト後、メインコンテンツを表示 */
+#main {
+  display: none;
+}
+
+#loading.fade-out + #main {
+  display: block;
+}
